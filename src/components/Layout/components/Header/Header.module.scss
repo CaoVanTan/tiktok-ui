@@ -19,6 +19,18 @@
     height: 42px;
 }
 
+.search-result {
+    width: 363px;
+}
+
+.search-title {
+    padding: 5px 12px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.5);
+}
+
 .search {
     display: flex;
     justify-content: space-between;
