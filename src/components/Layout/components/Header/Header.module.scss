@@ -57,7 +57,7 @@
 
     &::after {
         position: absolute;
-        content: "";
+        content: '';
         background-color: rgba(22, 24, 35, 0.12);
         width: 1px;
         height: 28px;
@@ -90,7 +90,7 @@
     border-top-right-radius: 92px;
     border-bottom-right-radius: 92px;
     font-size: 2rem;
-    color: rgba(22, 24, 35, 0.34);;
+    color: rgba(22, 24, 35, 0.34);
 
     &:hover {
         cursor: pointer;
@@ -105,6 +105,36 @@
 .action {
     display: flex;
     align-items: center;
+}
+
+.action-btn {
+    height: 32px;
+    margin-left: 16px;
+    background-color: transparent;
+    cursor: pointer;
+
+    & svg {
+        display: block;
+    }
+
+    &.messages {
+        font-size: 2.6rem;
+        padding: 0 3px 0;
+    }
+
+    &.inbox {
+        font-size: 3.2rem;
+        padding: 0;
+    }
+}
+
+.user-avatar {
+    margin-left: 24px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
 }
 
 .more-btn {
