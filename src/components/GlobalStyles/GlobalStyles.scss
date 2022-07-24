@@ -3,7 +3,8 @@
 
 :root {
     --primary: rgba(254, 44, 85, 1);
-    --black: #000;
+    --black: rgba(0, 0, 0, 1);
+    --white: rgba(255, 255, 255, 1);
     --text-color: rgba(22, 24, 35, 1);
 
     // Hover
@@ -32,11 +33,14 @@ body {
 
 button,
 input,
-button:focus,
-input:focus,
 [tabindex] {
     outline: none;
     border: none;
+}
+
+button:focus,
+input:focus {
+    outline: none;
 }
 
 a[href] {
