@@ -31,6 +31,21 @@ const MENU_ITEMS = [
             </svg>
         ),
         title: 'English',
+        children: {
+            title: "Language",
+            data: [
+                {
+                    type: "language",
+                    code: "en",
+                    title: "English"
+                },
+                {
+                    type: "language",
+                    code: "vi",
+                    title: "Tiếng việt"
+                }
+            ]
+        }
     },
     {
         icon: (
@@ -81,6 +96,16 @@ function Header() {
             setSearchResult([]);
         }, 0);
     }, []);
+
+    // Handle logic
+    const handleMenuChange = (menuItem) => {
+        switch(menuItem.type) {
+            case "language":
+                // Handle change language
+                break;
+            default:
+        }
+    };
 
     return (
         <header className={cx('wrapper')}>
@@ -206,7 +231,7 @@ function Header() {
                         Upload
                     </Button>
                     <Button primary>Log in</Button> {/* primary, outline, small */}
-                    <Menu items={MENU_ITEMS}>
+                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
                         <button className={cx('more-btn')}>
                             <svg
                                 className="tiktok-lgo5n0-StyledEllipsisVertical e13wiwn64"
