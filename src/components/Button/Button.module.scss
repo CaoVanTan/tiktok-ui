@@ -61,9 +61,8 @@
 }
 
 .outline {
-    border: 1px solid var(--primary);
+    border-color: var(--primary);
     color: var(--primary);
-    background-color: var(--white);
     font-weight: 600;
 
     &:hover {
@@ -73,10 +72,9 @@
 }
 
 .text {
-    min-width: 110px;
     min-height: 36px;
     padding: 0 16px;
-    border: 1px solid rgba(22, 24, 35, 0.12);
+    border-color: rgba(22, 24, 35, 0.12);
     border-radius: 2px;
 
     &:hover {

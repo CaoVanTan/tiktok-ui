@@ -160,6 +160,7 @@ function Header() {
                 <Tippy
                     interactive
                     visible={searchResult.length > 0}
+                    placement="bottom"
                     render={(attrs) => (
                         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                             <PopperWrapper>

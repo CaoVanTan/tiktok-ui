@@ -1,24 +1,24 @@
 .menu-list {
     width: 223px;
     padding: 10px 0px 8px;
+}
 
-    & .menu-item {
-        display: flex;
-        align-items: center;
-        text-align: start;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 22px;
-        padding: 10px 16px;
-        background-color: var(--white);
-        cursor: pointer;
+.menu-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 10px 16px;
+    background-color: var(--white);
+    cursor: pointer;
 
-        &:hover {
-            background-color: var(--hover-color);
-        }
+    &:hover {
+        background-color: var(--hover-color);
+    }
 
-        &:last-child {
-            margin-bottom: 8px;
-        }
+    &:last-child {
+        margin-bottom: 8px;
     }
 }
