@@ -62,7 +62,7 @@
         width: 1px;
         height: 28px;
         right: 52px;
-        top: 9px;
+        top: 7px;
     }
 
     &:focus-within {
@@ -74,23 +74,24 @@
 .loading {
     position: absolute;
     right: 52px;
-    top: 50%;
+    top: 52%;
     transform: translateY(-50%);
     padding: 0 12px;
     color: rgba(22, 24, 35, 0.34);
-    // display: none;
+    display: none;
 }
 
 .search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: transparent;
-    color: #ccc;
     margin-right: -16px;
     width: 52px;
     height: 46px;
     border-top-right-radius: 92px;
     border-bottom-right-radius: 92px;
-    font-size: 2rem;
-    color: rgba(22, 24, 35, 0.34);
+    padding: 0 16px 0 12px;
 
     &:hover {
         cursor: pointer;
