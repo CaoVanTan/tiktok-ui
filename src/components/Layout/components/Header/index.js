@@ -8,6 +8,7 @@ import styles from './Header.module.scss';
 import Menu from '~/components/Popper/Menu';
 import Image from '~/components/Image';
 import Search from '../Search';
+import routesConfig from '~/config/routes';
 import {
     CoinsIcon,
     HelpIcon,
@@ -97,10 +98,10 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={"/"} className={cx('logo')}>
+                <Link to={routesConfig.home} className={cx('logo')}>
                     <Logo />
                 </Link>
-                
+
                 <Search />
 
                 <div className={cx('action')}>
@@ -132,7 +133,7 @@ function Header() {
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
-                                src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/7102465899470258181~c5_720x720.jpeg?x-expires=1659189600&x-signature=1f1WcYcbhhE836nZl5Hz9RaYHf0%3D"
+                                src="https://yt3.ggpht.com/yti/AJo0G0mhrswB2Goi3GALQD6nHGYt12YJNbrIo9HLpA=s88-c-k-c0x00ffffff-no-rj-mo"
                                 alt="Cao Van Tan"
                                 // fallback=""
                             />
