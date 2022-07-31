@@ -45,14 +45,19 @@ function Menu({ children, items = [], onChange = defaultFn }) {
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
-                        {history.length > 1 && <Header title="Language" onBack={() => {
-                            setHistory(prev => history.slice(0, prev.length - 1));
-                        }} />}
-                        {renderItems()}
+                        {history.length > 1 && (
+                            <Header
+                                title="Language"
+                                onBack={() => {
+                                    setHistory((prev) => history.slice(0, prev.length - 1));
+                                }}
+                            />
+                        )}
+                        <div className={cx('menu-body')}>{renderItems()}</div>
                     </PopperWrapper>
                 </div>
             )}
-            onHide={() => setHistory(prev => prev.slice(0, 1))}
+            onHide={() => setHistory((prev) => prev.slice(0, 1))}
         >
             {children}
         </Tippy>
