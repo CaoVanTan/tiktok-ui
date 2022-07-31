@@ -16,15 +16,15 @@ const cx = classNames.bind(styles);
 function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [searchValue, setSearchValue] = useState('');
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const debounced = useDebounce(searchValue, 500);
+    const debouncedValue = useDebounce(searchValue, 500);
 
     const searchRef = useRef();
 
     useEffect(() => {
-        if (!debounced.trim()) {
+        if (!debouncedValue.trim()) {
             setSearchResult([]);
             return;
         }
@@ -32,14 +32,14 @@ function Search() {
         const fetchApi = async () => {
             setLoading(true);
 
-            const result = await searchSevices.search(debounced);
+            const result = await searchSevices.search(debouncedValue);
             setSearchResult(result);
 
             setLoading(false);
         };
 
         fetchApi();
-    }, [debounced]);
+    }, [debouncedValue]);
 
     const handleHideResult = () => {
         setShowResult(false);
@@ -56,24 +56,32 @@ function Search() {
         e.preventDefault();
     };
 
+    const renderResult = (attrs) => (
+        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+            <PopperWrapper>
+                <div className={cx('search-title')}>Accounts</div>
+                {searchResult.map((result) => (
+                    <AccountItem key={result.id} data={result} />
+                ))}
+            </PopperWrapper>
+        </div>
+    );
+
+    const handleClear = () => {
+        setSearchValue('');
+        setSearchResult([]);
+        searchRef.current.focus();
+    };
+
     return (
-        // Using a wrapper <div> tag around the reference element solves 
+        // Using a wrapper <div> tag around the reference element solves
         // this by creating a new parentNode context.
         <div>
             <HeadlessTippy
                 interactive
                 visible={showResult && searchResult.length > 0}
                 placement="bottom"
-                render={(attrs) => (
-                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                        <PopperWrapper>
-                            <div className={cx('search-title')}>Accounts</div>
-                            {searchResult.map((result) => (
-                                <AccountItem key={result.id} data={result} />
-                            ))}
-                        </PopperWrapper>
-                    </div>
-                )}
+                render={renderResult}
                 onClickOutside={handleHideResult}
             >
                 <div className={cx('search')}>
@@ -86,21 +94,14 @@ function Search() {
                         onChange={handleChange}
                         onFocus={() => setShowResult(true)}
                     />
-    
+
                     {!!searchValue && !loading && (
-                        <button
-                            className={cx('clear-btn')}
-                            onClick={() => {
-                                setSearchValue('');
-                                setSearchResult([]);
-                                searchRef.current.focus();
-                            }}
-                        >
+                        <button className={cx('clear-btn')} onClick={handleClear}>
                             <FontAwesomeIcon icon={faCircleXmark} />
                         </button>
                     )}
                     {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
-    
+
                     <button className={cx('search-btn')} onMouseDown={handleSubmit}>
                         <SearchIcon />
                     </button>
